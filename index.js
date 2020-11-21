@@ -3,8 +3,8 @@ import express from 'express';
 import { imageMap, carousel } from './template';
 
 const lineConfig = {
-    channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN || '/Cc+gz2XwOLhUVIjYdVT0Df8d7l1Y5enFdv6BnMX7WyWSNwEaEKuRc5EnwQrTlS9mVFYp4vGoPdEtek62iRsb3k1lMw1UHaPQAEV9lqqeA+janICpbwg88WXE7Vpx+bmn0O2LtMEvTWY98ml3DPqtAdB04t89/1O/w1cDnyilFU=',
-    channelSecret: process.env.CHANNEL_SECRET || 'e8bc3cfb8f1c14340910a6603228ae21'
+    channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN || 'ohQ35vtFDgdq/n7r++Eays1NQYBGOqvxN6msZtq6IA0FhlJfq0xFk/+EmjXNvEUGbyrVQgoha8u5nYRU10+As4Gkg9F7B1gp0QM+CFxawIDCNpOoo4/w1QCp5lXpHI+NFXyZ1DbqhWzJzztcRm9iIQdB04t89/1O/w1cDnyilFU=',
+    channelSecret: process.env.CHANNEL_SECRET || '9f5ed39b561becca234caf7af617ec1d',
 };
 
 const client = new Client(lineConfig);
