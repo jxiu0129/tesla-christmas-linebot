@@ -1,6 +1,5 @@
 import { Client, middleware } from '@line/bot-sdk';
 import express from 'express';
-import { imageMap, carousel } from './template';
 import { questions, mapReceiver } from './text';
 
 const lineConfig = {
@@ -68,7 +67,7 @@ const handleEvent = (event) => {
         // });   
         return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: `Hello ${userName}!\n感謝您一年來的付出\n您已受邀參加本次的Tesla聖誕饗宴\n會由我來幫您尋找您的交換禮物送禮對象!!\n\n請輸入ok來開始回答問題！`
+            text: `Hello ${userName}!\n感謝您一年來的付出\n您已受邀參加本次的Tesla聖誕饗宴！\n就由我來幫您尋找您的交換禮物送禮對象🎄`
             });
     case 'message': //傳訊息給機器人
         switch (event.message.type) {
@@ -86,6 +85,8 @@ const handleEvent = (event) => {
 
 // let qCounter = 0;
 // let receiver;
+const loveEmoji = String.fromCodePoint(0x100078);
+const winkEmoji = String.fromCodePoint(0x10008F);
 const textHandler = (replyToken, inputText) => {
     try{
         let resText;
@@ -118,7 +119,7 @@ const textHandler = (replyToken, inputText) => {
                     if(userCheck.receiver === undefined) {
                         return client.replyMessage(replyToken, {
                             type: 'text',
-                            text: `奇怪，不太對喔～ 請檢查你名字字首有沒有大寫，或是把自己名字拼錯呢？`
+                            text: `奇怪，不太對喔～\n請檢查你名字字首有沒有大寫，或是把自己名字拼錯呢？請不要加上姓氏喔！`
                         });
                     }
                 } else {
@@ -129,12 +130,12 @@ const textHandler = (replyToken, inputText) => {
                     });
                 }
             }
-            if(userCheck.qCounter < 5) {
+            if(userCheck.qCounter < 6) {
                 resText = questions[userCheck.qCounter];
                 userCheck.qCounter++;
             } else {
                 userCheck.qCounter = 0;
-                resText = `漂亮!!${userName}果然是特斯拉的傑出員工!!\n您這次的送禮對象為 ${userCheck.receiver}\n請精心為他挑選禮品並附上手寫小卡片一張\uDBC0\uDC84`;
+                resText = `漂亮！！${userName}果然是特斯拉的傑出員工！！\n特斯拉沒有您怎麼活${loveEmoji}\n您這次的送禮對象為${userCheck.receiver}\n請精心為他挑選禮品並附上手寫小卡片一張${winkEmoji}`
             }
         }
         return client.replyMessage(replyToken, {
